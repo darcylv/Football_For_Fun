@@ -280,6 +280,17 @@ Image resources in this project come from public sources or are original creatio
 
 ***
 
+### AI辅助开发说明 / AI-Assisted Development Disclosure
+
+本项目在开发过程中使用了以下 AI 工具辅助生成部分代码：/ The following AI tools were used during the development of this project to assist with code generation, logic debugging, and documentation:
+
+- **代码生成与调试**：TRAE_CN / **Code generation and debugging**: TRAE_CN
+
+- **美术/音效**：豆包 / **Art/Audioe**: Doubao
+
+所有 AI 生成的代码均经过人工审查、测试和修改，符合项目的功能与质量要求。 / All AI-generated content has been manually reviewed, tested, and modified as necessary to meet the project’s functional, performance, and security requirements.
+最终代码的著作权及项目整体成果归本人所有。 / The copyright of the final code and the overall project belongs to the author.
+
 ## 安全声明 / Security Notice
 
 ⚠️ **重要提示**：本项目涉及在线共享题库功能，部署时请注意以下安全事项：
