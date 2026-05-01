@@ -4,7 +4,7 @@
 
 An HTML5-based World Cup trivia quiz game with 10  questions, where players receive different ratings based on their accuracy. The game supports custom questions, cloud-shared question bank, and hidden achievements.
 
-<img width="576" height="502" alt="游戏封面" src="https://github.com/user-attachments/assets/0a533991-2592-48fd-ae22-04289055dd0d" /> <img width="580" height="576" alt="问题示例" src="https://github.com/user-attachments/assets/6d06a0b2-a013-4d48-8f6d-8dc43113a7b0" />
+<img width="288" height="251" alt="游戏封面" src="https://github.com/user-attachments/assets/0a533991-2592-48fd-ae22-04289055dd0d" /> <img width="252" height="251" alt="问题示例" src="https://github.com/user-attachments/assets/6d06a0b2-a013-4d48-8f6d-8dc43113a7b0" />
 
 
 
