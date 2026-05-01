@@ -79,13 +79,6 @@ open http://localhost:8080/questions.html
 - **新玩家**：首次访问时按题目 ID 顺序出题（Q001\~Q010）/ **New players**: First visit gets questions in order by ID (Q001\~Q010)
 - **老玩家**：再次访问时从题库中随机抽取 10 道题 / **Returning players**: Randomly pick 10 questions from the bank on subsequent visits
 
-### 隐藏成就 / Hidden Achievements
-
-| 成就名称 / Achievement Name        | 图标   | 解锁条件 / Unlock Condition     |
-| ------------------------------ | ---- | --------------------------- |
-| 粤语解说达人 / Cantonese Commentator | 🏆   | Q002选A、Q003选A、Q004选A、Q005选C |
-| 真中国球迷 / True Chinese Fan       | 🇨🇳 | Q009选C、Q010选C               |
-
 ### 用户创建问题 / User-Created Questions
 
 - 支持创建文字选择题和图片选择题 / Supports creating text and image questions
