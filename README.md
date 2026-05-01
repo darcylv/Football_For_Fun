@@ -293,6 +293,7 @@ Image resources in this project come from public sources or are original creatio
 - **美术/音效**：豆包 / **Art/Audioe**: Doubao
 
 所有 AI 生成的代码均经过人工审查、测试和修改，符合项目的功能与质量要求。 / All AI-generated content has been manually reviewed, tested, and modified as necessary to meet the project’s functional, performance, and security requirements.
+
 最终代码的著作权及项目整体成果归本人所有。 / The copyright of the final code and the overall project belongs to the author.
 
 ## 安全声明 / Security Notice
