@@ -1,0 +1,11 @@
+{
+  "credentials": {
+    "admin": "fa1e54aedcbcca11fd6f72b6f80c98de03b8172743363946327f2305a6981957",
+    "user": "fd131235289fdcfc1c7fbccc6a8417c597517f7fcb20890625728c936c1b4e46"
+  },
+  "api_keys": [
+    "d97df1f1485d4ac39372"
+  ],
+  "rate_limit": 100,
+  "rate_limit_window": 60
+}

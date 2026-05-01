@@ -1,0 +1,11 @@
+{
+  "credentials": {
+    "admin": "请替换为你的管理员密码哈希",
+    "user": "请替换为你的用户密码哈希"
+  },
+  "api_keys": [
+    "请替换为你的API_KEY"
+  ],
+  "rate_limit": 100,
+  "rate_limit_window": 60
+}
