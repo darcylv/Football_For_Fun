@@ -2,7 +2,7 @@
 
 一个基于 HTML5 的世界杯知识问答游戏，包含 10 道选择题，玩家答题后根据正确率获得不同评级。游戏支持用户自定义问题、云端共享题库、隐藏成就解锁等功能。
 
-An HTML5-based World Cup trivia quiz game with 10  questions, where players receive different ratings based on their accuracy. The game supports custom questions, cloud-shared question bank, and hidden achievements.
+An HTML5-based World Cup quiz game with 10  questions, where players receive different ratings based on their accuracy. The game supports custom questions, cloud-shared question bank, and hidden achievements.
 
 <img width="504" height="439" alt="游戏封面" src="https://github.com/user-attachments/assets/0a533991-2592-48fd-ae22-04289055dd0d" /> <img width="504" height="502" alt="问题示例" src="https://github.com/user-attachments/assets/6d06a0b2-a013-4d48-8f6d-8dc43113a7b0" />
 
@@ -249,16 +249,10 @@ class WorldCupQuiz {
 
 ## 注意事项 / Notes
 
+### 游戏运行 / Running the game
 1. **本地服务器**：由于浏览器安全策略，需要通过 HTTP 服务器访问，不能直接打开 HTML 文件 / **Local server**: Browser security requires HTTP server, cannot open HTML files directly
 2. **图片路径**：本地图片放在 `images/` 目录，使用相对路径引用 / **Image paths**: Local images in `images/` directory, use relative paths
 3. **数据同步**：不同浏览器/设备的数据不共享（除非使用云端服务器）/ **Data sync**: Data not shared across browsers/devices (unless using cloud server)
-4. **隐藏成就**：需要按顺序抽到对应题目才能解锁（基于题目 ID 判断）/ **Hidden achievements**: Must get questions in order to unlock (based on question ID)
-
-## 许可证 / License
-
-本项目基于 Apache 2.0 许可证开源。
-
-This project is open source under the Apache License 2.0.
 
 ### 第三方资源说明 / Third-Party Resources
 
@@ -274,8 +268,6 @@ This project uses the following open-source tools and resources:
 本项目中的图片资源均来自公开渠道或由开发者原创（其中部分图片使用了AI工具进行生成或修改），旨在用于世界杯知识问答的学术和教育目的。如有任何版权问题，请联系我们进行删除或授权。
 
 Image resources in this project come from public sources or are original creations (some images generated or modified using AI tools), intended for academic and educational purposes related to World Cup trivia. If there are any copyright issues, please contact us for removal or licensing.
-
-***
 
 ### AI辅助开发说明 / AI-Assisted Development Disclosure
 
@@ -314,6 +306,12 @@ Image resources in this project come from public sources or are original creatio
    - 服务器端已实现数据验证，但用户提交的内容仍需谨慎处理 / Server has data validation, but user submissions need caution
    - 建议对图片类问题实施内容安全策略（CSP）/ Recommend CSP for image questions
    - 防止 XSS 攻击：用户上传的图片以 Base64 形式存储，输出时已做转义处理 / XSS prevention: User-uploaded images stored as Base64, escaped on output
+
+## 许可证 / License
+
+本项目基于 Apache 2.0 许可证开源。
+
+This project is open source under the Apache License 2.0.
 
 ### 开源声明 / Open Source Notice
 
