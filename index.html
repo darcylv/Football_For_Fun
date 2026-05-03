@@ -12,10 +12,15 @@
         <!-- 开始界面：显示游戏标题和开始按钮 -->
         <div id="start-screen" class="screen active">
             <div class="trophy-icon">🏆</div>
-            <h1>世界杯经典瞬间</h1>
-            <p class="subtitle">10道题决定你的世界杯观赛席位</p>
+            <h1 data-i18n="title">世界杯经典瞬间</h1>
+            <p class="subtitle" data-i18n="subtitle">10道题决定你的世界杯观赛席位</p>
             <div class="stadium-preview">⚽🏟️⚽</div>
-            <button id="start-btn" class="primary-btn">游戏开始</button>
+            <!-- 语言切换按钮 -->
+            <div class="language-selector">
+                <button id="lang-zh" class="lang-btn active">中文</button>
+                <button id="lang-en" class="lang-btn">English</button>
+            </div>
+            <button id="start-btn" class="primary-btn" data-i18n="startBtn">游戏开始</button>
         </div>
 
         <!-- 答题界面：显示题目、图片和选项 -->
@@ -45,21 +50,21 @@
         <div id="result-screen" class="screen">
             <!-- 结果图标：显示评级对应的图标 -->
             <div class="result-icon" id="result-icon">🏟️</div>
-            <h1 id="result-title">评测结果</h1>
+            <h1 id="result-title" data-i18n="resultTitle">评测结果</h1>
             <!-- 统计信息：显示正确题数和正确率 -->
             <div class="result-stats">
                 <div class="stat-item">
-                    <span class="stat-label">正确题数</span>
+                    <span class="stat-label" data-i18n="correctCount">正确题数</span>
                     <span class="stat-value" id="correct-count">0</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-label">正确率</span>
+                    <span class="stat-label" data-i18n="accuracy">正确率</span>
                     <span class="stat-value" id="final-accuracy">0%</span>
                 </div>
             </div>
             <!-- 评级显示：显示用户的观赛席位评级 -->
             <div class="result-rank">
-                <span class="rank-label">你的评级</span>
+                <span class="rank-label" data-i18n="yourRank">你的评级</span>
                 <span class="rank-value" id="rank-value">普通观众席</span>
             </div>
             <!-- 结果描述：显示评级对应的描述文字 -->
@@ -69,47 +74,47 @@
             </div>
             <!-- 操作按钮 -->
             <div class="result-buttons">
-                <button id="restart-btn" class="primary-btn">再玩一次</button>
-                <button id="create-question-btn" class="secondary-btn">创建问题</button>
+                <button id="restart-btn" class="primary-btn" data-i18n="playAgain">再玩一次</button>
+                <button id="create-question-btn" class="secondary-btn" data-i18n="createQuestion">创建问题</button>
             </div>
         </div>
 
         <!-- 创建问题界面：允许用户创建自己的问题 -->
         <div id="create-question-screen" class="screen">
-            <h1>创建问题</h1>
-            <p class="subtitle">分享你的世界杯回忆，创建新的问题</p>
+            <h1 data-i18n="createTitle">创建问题</h1>
+            <p class="subtitle" data-i18n="createSubtitle">分享你的世界杯回忆，创建新的问题</p>
             
             <!-- 问题类型选择 -->
             <div class="create-section">
-                <h3>选择问题类型</h3>
+                <h3 data-i18n="selectType">选择问题类型</h3>
                 <div class="type-selector">
                     <label>
                         <input type="radio" name="question-type" value="text" checked>
-                        <span>文字选择题</span>
+                        <span data-i18n="textQuestion">文字选择题</span>
                     </label>
                     <label>
                         <input type="radio" name="question-type" value="image">
-                        <span>图片选择题</span>
+                        <span data-i18n="imageQuestion">图片选择题</span>
                     </label>
                 </div>
             </div>
             
             <!-- 文字选择题表单 -->
             <div id="text-question-form" class="create-section">
-                <h3>文字选择题</h3>
+                <h3 data-i18n="textFormTitle">文字选择题</h3>
                 <div class="form-group">
-                    <label>问题</label>
-                    <input type="text" id="text-question" placeholder="请输入问题..." required>
+                    <label data-i18n="question">问题</label>
+                    <input type="text" id="text-question" placeholder="请输入问题..." data-placeholder-i18n="enterQuestion" required>
                 </div>
                 <div class="form-group">
-                    <label>问题配图</label>
+                    <label data-i18n="questionImage">问题配图</label>
                     <input type="file" id="text-question-image" accept="image/*">
                     <label class="checkbox-label">
-                        <input type="checkbox" id="no-image"> 无配图
+                        <input type="checkbox" id="no-image"> <span data-i18n="noImage">无配图</span>
                     </label>
                 </div>
                 <div class="form-group">
-                    <label>选项</label>
+                    <label data-i18n="options">选项</label>
                     <div id="text-options-container">
                         <div class="option-input">
                             <input type="text" class="option-text" placeholder="选项 1" required>
@@ -120,10 +125,10 @@
                             <button type="button" class="remove-option">×</button>
                         </div>
                     </div>
-                    <button type="button" id="add-text-option" class="add-option-btn">+ 添加选项</button>
+                    <button type="button" id="add-text-option" class="add-option-btn" data-i18n="addOption">+ 添加选项</button>
                 </div>
                 <div class="form-group">
-                    <label>正确答案</label>
+                    <label data-i18n="correctAnswer">正确答案</label>
                     <div id="text-correct-answers" class="correct-answers-container">
                         <!-- 动态生成复选框 -->
                     </div>
@@ -132,13 +137,13 @@
             
             <!-- 图片选择题表单 -->
             <div id="image-question-form" class="create-section" style="display: none;">
-                <h3>图片选择题</h3>
+                <h3 data-i18n="imageFormTitle">图片选择题</h3>
                 <div class="form-group">
-                    <label>问题</label>
-                    <input type="text" id="image-question" placeholder="请输入问题..." required>
+                    <label data-i18n="question">问题</label>
+                    <input type="text" id="image-question" placeholder="请输入问题..." data-placeholder-i18n="enterQuestion" required>
                 </div>
                 <div class="form-group">
-                    <label>图片选项</label>
+                    <label data-i18n="imageOptions">图片选项</label>
                     <div id="image-options-container">
                         <div class="option-input">
                             <input type="file" class="option-image" accept="image/*" required>
@@ -149,10 +154,10 @@
                             <button type="button" class="remove-option">×</button>
                         </div>
                     </div>
-                    <button type="button" id="add-image-option" class="add-option-btn">+ 添加选项</button>
+                    <button type="button" id="add-image-option" class="add-option-btn" data-i18n="addOption">+ 添加选项</button>
                 </div>
                 <div class="form-group">
-                    <label>正确答案</label>
+                    <label data-i18n="correctAnswer">正确答案</label>
                     <div id="image-correct-answers" class="correct-answers-container">
                         <!-- 动态生成复选框 -->
                     </div>
@@ -161,8 +166,8 @@
             
             <!-- 操作按钮 -->
             <div class="create-buttons">
-                <button id="cancel-create" class="secondary-btn">取消</button>
-                <button id="save-question" class="primary-btn">保存问题</button>
+                <button id="cancel-create" class="secondary-btn" data-i18n="cancel">取消</button>
+                <button id="save-question" class="primary-btn" data-i18n="saveQuestion">保存问题</button>
             </div>
         </div>
     </div>
