@@ -111,16 +111,6 @@ For_Fun/
 ├── LICENSE                 # Apache 2.0 许可证 / Apache 2.0 License
 ├── README.md               # 项目说明文档 / Project documentation
 └── images/                 # 图片资源目录 / Image resource directory
-    ├── baqiao.png         # 巴乔 / Baggio
-    ├── qizu.png           # 齐达内 / Zidane
-    ├── xiaobei.png        # 小贝 / Beckham
-    ├── shangdi.png        # 上帝之手 / Hand of God
-    ├── suya.png           # 苏亚雷斯 / Suarez
-    ├── nanzu.png          # 男足 / Chinese Men's Team
-    ├── nvzu.png           # 女足 / Chinese Women's Team
-    ├── menxian.png        # 门线悬案 / Goal Line Controversy
-    ├── shiji_A.png        # 世纪进球选项A / Goal of the Century Option A
-    └── shiji_B.png        # 世纪进球选项B / Goal of the Century Option B
 ```
 
 ## API 文档 / API Documentation
