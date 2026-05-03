@@ -74,8 +74,8 @@ open http://localhost:8080/questions.html
 | 100%           | 教练席 / Coach's Box        | ⚽  | 你是真正的世界杯专家！对经典瞬间了如指掌，值得和主教练一起观赛！ / You are a true World Cup expert! You know all the classic moments, worthy of watching the game with the head coach! |
 | 80%-99%        | VIP包厢 / VIP Box          | ⭐  | 你很熟悉世界杯，VIP包厢的位置让你不错过任何精彩瞬间！ / You are very familiar with the World Cup, the VIP box lets you not miss any exciting moments!                           |
 | 60%-79%        | 普通观众席 / Regular Seats    | 🙋 | 你对世界杯有一定了解，在观众席为心爱的球队呐喊吧！ / You have some understanding of the World Cup, cheer for your favorite team in the stands!                                  |
-| 20%-49%        | 场外球迷区 / Outside Fan Zone | 🍺 | 看来你错过了很多世界杯精彩时刻，在球场外围和球迷狂欢吧！ / Looks like you missed many exciting World Cup moments, party with fans outside the stadium!                             |
-| 10%-19%        | 家里蹲 / Home Watching      | 🏠 | 世界杯对你来说可能有点陌生？没关系，在家看直播也很不错哦！ / World Cup might be a bit unfamiliar to you? No problem, watching the live stream at home is also great!                |
+| 20%-49%        | 场外球迷区 / Fan Zones | 🍺 | 看来你错过了很多世界杯精彩时刻，在球场外围和球迷狂欢吧！ / Looks like you missed many exciting World Cup moments, party with fans outside the stadium!                             |
+| 0%-19%        | 家里蹲 / Home Watching      | 🏠 | 世界杯对你来说可能有点陌生？没关系，在家看直播也很不错哦！ / World Cup might be a bit unfamiliar to you? No problem, watching the live stream at home is also great!                |
 
 ### 新老玩家策略 / New vs Returning Players
 
