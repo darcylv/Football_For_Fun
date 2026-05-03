@@ -18,6 +18,7 @@ An HTML5-based World Cup quiz game with 10  questions, where players receive dif
 - [API 文档 / API Documentation](#api-文档--api-documentation)
 - [部署说明 / Deployment](#部署说明--deployment)
 - [开发指南 / Development Guide](#开发指南--development-guide)
+- [注意事项 / Notes](#注意事项--Notes)
 - [许可证 / License](#许可证--license)
 
 ## 快速开始 / Quick Start
@@ -216,9 +217,9 @@ localStorage.removeItem('world_cup_quiz_played');
 localStorage.removeItem('world_cup_quiz_cloud_cache');
 ```
 
-## 模块说明 / Module Documentation
+### 模块说明 / Module Documentation
 
-### questions\_data.js
+#### questions\_data.js
 
 题库数据模块，使用 IIFE 模式封装，提供以下接口：
 
@@ -232,7 +233,7 @@ Question bank data module, encapsulated in IIFE pattern, provides:
 - `hasPlayedBefore()` - 检查是否玩过游戏 / Check if played before
 - `markAsPlayed()` - 标记已玩过游戏 / Mark as played
 
-### script.js
+#### script.js
 
 游戏核心逻辑，包含 WorldCupQuiz 类：
 
@@ -283,7 +284,7 @@ Image resources in this project come from public sources or are original creatio
 
 最终代码的著作权及项目整体成果归本人所有。 / The copyright of the final code and the overall project belongs to the author.
 
-## 安全声明 / Security Notice
+### 安全声明 / Security Notice
 
 ⚠️ **重要提示**：本项目涉及在线共享题库功能，部署时请注意以下安全事项：
 
