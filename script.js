@@ -14,46 +14,160 @@
  * limitations under the License.
  */
 
-/**
- * 评级数据数组
- * 根据正确率评级，包含：最低正确率、评级名称、图标、描述
- */
+// 翻译文本映射
+const i18n = {
+    zh: {
+        title: '世界杯经典瞬间',
+        subtitle: '10道题决定你的世界杯观赛席位',
+        startBtn: '游戏开始',
+        resultTitle: '评测结果',
+        correctCount: '正确题数',
+        accuracy: '正确率',
+        yourRank: '你的评级',
+        playAgain: '再玩一次',
+        createQuestion: '创建问题',
+        createTitle: '创建问题',
+        createSubtitle: '分享你的世界杯回忆，创建新的问题',
+        selectType: '选择问题类型',
+        textQuestion: '文字选择题',
+        imageQuestion: '图片选择题',
+        textFormTitle: '文字选择题',
+        imageFormTitle: '图片选择题',
+        question: '问题',
+        questionImage: '问题配图',
+        noImage: '无配图',
+        options: '选项',
+        addOption: '+ 添加选项',
+        correctAnswer: '正确答案',
+        imageOptions: '图片选项',
+        cancel: '取消',
+        saveQuestion: '保存问题',
+        loadingQuestions: '正在加载题库...',
+        enterQuestion: '请输入问题...',
+        alertEnterQuestion: '请输入问题',
+        alertFillAllOptions: '请填写所有选项',
+        alertSelectCorrect: '请至少选择一个正确答案',
+        alertUploadImages: '请上传所有图片选项',
+        alertCannotConnectCloud: '无法连接到线上题库，问题已保存到本地',
+        alertSavedToCloud: '问题已保存到线上共享题库！',
+        minTwoOptions: '至少需要2个选项'
+    },
+    en: {
+        title: 'World Cup Classic Moments',
+        subtitle: '10 questions determine your World Cup seating',
+        startBtn: 'Start Game',
+        resultTitle: 'Quiz Results',
+        correctCount: 'Correct',
+        accuracy: 'Accuracy',
+        yourRank: 'Your Rating',
+        playAgain: 'Play Again',
+        createQuestion: 'Create Question',
+        createTitle: 'Create Question',
+        createSubtitle: 'Share your World Cup memories, create new questions',
+        selectType: 'Select Question Type',
+        textQuestion: 'Text Question',
+        imageQuestion: 'Image Question',
+        textFormTitle: 'Text Question',
+        imageFormTitle: 'Image Question',
+        question: 'Question',
+        questionImage: 'Question Image',
+        noImage: 'No Image',
+        options: 'Options',
+        addOption: '+ Add Option',
+        correctAnswer: 'Correct Answer',
+        imageOptions: 'Image Options',
+        cancel: 'Cancel',
+        saveQuestion: 'Save Question',
+        loadingQuestions: 'Loading questions...',
+        enterQuestion: 'Enter your question...',
+        alertEnterQuestion: 'Please enter a question',
+        alertFillAllOptions: 'Please fill in all options',
+        alertSelectCorrect: 'Please select at least one correct answer',
+        alertUploadImages: 'Please upload all image options',
+        alertCannotConnectCloud: 'Cannot connect to online question bank, saved locally',
+        alertSavedToCloud: 'Question saved to online shared question bank!',
+        minTwoOptions: 'At least 2 options required'
+    }
+};
+
+// 评级数据数组（双语）
 const ranks = [
-    { min: 100, rank: "教练席", icon: "⚽", desc: "你是真正的世界杯专家！对经典瞬间了如指掌，值得和主教练一起观赛！" },
-    { min: 80, rank: "VIP包厢", icon: "⭐", desc: "你很熟悉世界杯，VIP包厢的位置让你不错过任何精彩瞬间！"  },
-    { min: 60, rank: "普通观众席", icon: "🙋", desc: "你对世界杯有一定了解，在观众席为心爱的球队呐喊吧！" },
-    { min: 20, rank: "场外球迷区", icon: "🍺", desc: "看来你错过了很多世界杯精彩时刻，在球场外围和球迷狂欢吧！" },
-    { min: 0, rank: "家里蹲", icon: "🏠", desc: "世界杯对你来说可能有点陌生？没关系，在家看直播也很不错哦！" }
+    { min: 100, rank: { zh: "教练席", en: "Coach's Box" }, icon: "⚽", desc: { zh: "你是真正的世界杯专家！对经典瞬间了如指掌，值得和主教练一起观赛！", en: "You are a true World Cup expert! You know all the classic moments, worthy of watching the game with the head coach!" } },
+    { min: 80, rank: { zh: "VIP包厢", en: "VIP Box" }, icon: "⭐", desc: { zh: "你很熟悉世界杯，VIP包厢的位置让你不错过任何精彩瞬间！", en: "You are very familiar with the World Cup, the VIP box lets you not miss any exciting moments!" } },
+    { min: 60, rank: { zh: "普通观众席", en: "Regular Seats" }, icon: "🙋", desc: { zh: "你对世界杯有一定了解，在观众席为心爱的球队呐喊吧！", en: "You have some understanding of the World Cup, cheer for your favorite team in the stands!" } },
+    { min: 20, rank: { zh: "场外球迷区", en: "Outside Fan Zone" }, icon: "🍺", desc: { zh: "看来你错过了很多世界杯精彩时刻，在球场外围和球迷狂欢吧！", en: "Looks like you missed many exciting World Cup moments, party with fans outside the stadium!" } },
+    { min: 0, rank: { zh: "家里蹲", en: "Home Watching" }, icon: "🏠", desc: { zh: "世界杯对你来说可能有点陌生？没关系，在家看直播也很不错哦！", en: "World Cup might be a bit unfamiliar to you? No problem, watching the live stream at home is also great!" } }
 ];
 
-/**
- * 隐藏成就数组
- * 满足特定条件时解锁，包含：成就名称、图标、描述、解锁条件
- */
+// 隐藏成就数组（双语）
 const hiddenAchievements = [
     {
-        name: "粤语解说达人",
+        name: { zh: "粤语解说达人", en: "Cantonese Commentator" },
         icon: "🏆",
-        desc: "恭喜你！你是真正的粤语世界杯解说专家，对各位球星的粤语译名了如指掌！",
-        check: (userChoicesMap) => {
-            // 条件：Q002选择选项A（索引0），Q003选择选项A（索引0），Q004选择选项A（索引0），Q005选择选项C（索引2）
-            return userChoicesMap['Q002'] === 0 && 
-                   userChoicesMap['Q003'] === 0 && 
-                   userChoicesMap['Q004'] === 0 && 
-                   userChoicesMap['Q005'] === 2;
+        desc: { zh: "恭喜你！你是真正的粤语世界杯解说专家，对各位球星的粤语译名了如指掌！", en: "Congratulations! You are a true Cantonese commentary expert, familiar with all the players' Cantonese names!" },
+        check: (userChoices, questions) => {
+            return userChoices['Q002'] === 0 &&
+                   userChoices['Q003'] === 0 &&
+                   userChoices['Q004'] === 0 &&
+                   userChoices['Q005'] === 2;
         }
     },
     {
-        name: "真中国球迷",
+        name: { zh: "真中国球迷", en: "Fan of Team China" },
         icon: "🇨🇳",
-        desc: "为中国足球操碎了心！无论男女足，都永远支持中国足球！",
-        check: (userChoicesMap) => {
-            // 条件：Q009选择选项C（索引2），Q010选择选项C（索引2）
-            return userChoicesMap['Q009'] === 2 && 
-                   userChoicesMap['Q010'] === 2;
+        desc: { zh: "为中国足球操碎了心！无论男女足，都永远支持中国足球！", en: "You deeply care about Chinese football! Support Chinese football always, both men's and women's teams!" },
+        check: (userChoices, questions) => {
+            return userChoices['Q009'] === 2 &&
+                   userChoices['Q010'] === 2;
         }
     }
 ];
+
+/**
+ * 获取翻译文本
+ */
+function t(key) {
+    const lang = WorldCupQuizData.getCurrentLanguage();
+    return i18n[lang][key] || i18n.zh[key] || key;
+}
+
+/**
+ * 获取双语文本的特定语言版本
+ */
+function getBilingualText(obj) {
+    if (!obj) return '';
+    const lang = WorldCupQuizData.getCurrentLanguage();
+    if (typeof obj === 'string') return obj;
+    return obj[lang] || obj.zh || '';
+}
+
+/**
+ * 更新所有带 data-i18n 属性的元素的文本
+ */
+function updateI18nTexts() {
+    const lang = WorldCupQuizData.getCurrentLanguage();
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[lang][key]) {
+            el.textContent = i18n[lang][key];
+        }
+    });
+
+    document.querySelectorAll('[data-placeholder-i18n]').forEach(el => {
+        const key = el.getAttribute('data-placeholder-i18n');
+        if (i18n[lang][key]) {
+            el.placeholder = i18n[lang][key];
+        }
+    });
+
+    const langBtns = document.querySelectorAll('.lang-btn');
+    langBtns.forEach(btn => {
+        btn.classList.remove('active');
+        if ((btn.id === 'lang-zh' && lang === 'zh') || (btn.id === 'lang-en' && lang === 'en')) {
+            btn.classList.add('active');
+        }
+    });
+}
 
 /**
  * WorldCupQuiz类 - 游戏主类
@@ -64,14 +178,25 @@ class WorldCupQuiz {
      * 构造函数 - 初始化游戏状态
      */
     constructor() {
-        this.currentQuestion = 0;  // 当前题目索引
-        this.correctCount = 0;     // 正确答题数
-        this.answered = false;      // 是否已答题标志
-        this.quizQuestions = [];    // 本次游戏的题目数组
-        this.userChoicesMap = {};   // 用户选择的答案映射 {questionId: choiceIndex}
+        this.currentQuestion = 0;
+        this.correctCount = 0;
+        this.answered = false;
+        this.quizQuestions = [];
+        this.userChoicesMap = {};
         
-        this.initElements();  // 初始化DOM元素引用
-        this.bindEvents();    // 绑定事件监听器
+        this.initElements();
+        this.bindEvents();
+        this.initLanguage();
+    }
+
+    /**
+     * 初始化语言设置
+     */
+    initLanguage() {
+        const lang = WorldCupQuizData.getCurrentLanguage();
+        document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+        document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+        updateI18nTexts();
     }
     
     /**
@@ -117,7 +242,6 @@ class WorldCupQuiz {
     
     /**
      * 绑定事件监听器
-     * 为开始按钮和再玩一次按钮绑定点击事件
      */
     bindEvents() {
         document.getElementById('start-btn').addEventListener('click', () => this.startGame());
@@ -127,6 +251,10 @@ class WorldCupQuiz {
         document.getElementById('save-question').addEventListener('click', () => this.saveQuestion());
         document.getElementById('add-text-option').addEventListener('click', () => this.addTextOption());
         document.getElementById('add-image-option').addEventListener('click', () => this.addImageOption());
+
+        // 语言切换
+        document.getElementById('lang-zh').addEventListener('click', () => this.setLanguage('zh'));
+        document.getElementById('lang-en').addEventListener('click', () => this.setLanguage('en'));
         
         // 问题类型切换
         this.questionTypeRadios.forEach(radio => {
@@ -170,17 +298,31 @@ class WorldCupQuiz {
         // 初始更新正确答案复选框
         this.updateCorrectAnswerCheckboxes('text');
     }
+
+    /**
+     * 设置语言
+     */
+    setLanguage(lang) {
+        WorldCupQuizData.setCurrentLanguage(lang);
+        document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+        document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+        updateI18nTexts();
+
+        // 如果在答题或结果界面，需要重新渲染
+        if (this.quizScreen.classList.contains('active')) {
+            this.loadQuestion();
+        } else if (this.resultScreen.classList.contains('active')) {
+            this.showResult();
+        }
+    }
     
     /**
      * 显示指定屏幕
-     * @param {HTMLElement} screen - 要显示的屏幕元素
      */
     showScreen(screen) {
-        // 隐藏所有屏幕
         [this.startScreen, this.quizScreen, this.resultScreen, this.createQuestionScreen].forEach(s => {
             s.classList.remove('active');
         });
-        // 显示目标屏幕
         screen.classList.add('active');
     }
     
@@ -188,6 +330,7 @@ class WorldCupQuiz {
      * 显示创建问题屏幕
      */
     showCreateQuestionScreen() {
+        updateI18nTexts();
         this.showScreen(this.createQuestionScreen);
     }
     
@@ -200,7 +343,6 @@ class WorldCupQuiz {
     
     /**
      * 开始游戏
-     * 重置游戏状态，显示答题界面，加载第一题
      */
     async startGame() {
         this.currentQuestion = 0;
@@ -208,16 +350,12 @@ class WorldCupQuiz {
         this.answered = false;
         this.userChoicesMap = {};
 
-        // 显示加载中状态
-        this.optionsContainer.innerHTML = '<p style="text-align: center; color: #666;">正在加载题库...</p>';
+        this.optionsContainer.innerHTML = `<p style="text-align: center; color: #666;">${t('loadingQuestions')}</p>`;
         this.showScreen(this.quizScreen);
 
-        // 根据用户是否玩过游戏决定题目选择策略
         if (WorldCupQuizData.hasPlayedBefore()) {
-            // 老玩家：异步获取并随机选择10道题
             this.quizQuestions = await WorldCupQuizData.getRandomQuestionsAsync(10);
         } else {
-            // 新玩家：使用有序的默认10道题
             this.quizQuestions = WorldCupQuizData.getOrderedQuestions();
         }
 
@@ -226,7 +364,6 @@ class WorldCupQuiz {
 
     /**
      * 重新开始游戏
-     * 调用startGame方法
      */
     restartGame() {
         this.startGame();
@@ -234,41 +371,36 @@ class WorldCupQuiz {
     
     /**
      * 加载题目
-     * 根据当前题目索引加载题目内容、图片和选项
      */
     loadQuestion() {
         this.answered = false;
         const q = this.quizQuestions[this.currentQuestion];
         
-        // 更新题目计数器和进度条
         this.currentQuestionEl.textContent = this.currentQuestion + 1;
         this.totalQuestionsEl.textContent = this.quizQuestions.length;
         this.progressFill.style.width = `${((this.currentQuestion + 1) / this.quizQuestions.length) * 100}%`;
         
-        // 加载题目图片和文本
         const imageContainer = document.getElementById('image-container');
         if (q.image && q.type !== "image") {
             this.questionImage.src = q.image;
-            this.questionImage.alt = "世界杯经典瞬间";
+            this.questionImage.alt = getBilingualText({ zh: "世界杯经典瞬间", en: "World Cup Classic Moment" });
             this.questionImage.style.display = 'block';
             imageContainer.style.display = 'flex';
         } else {
             this.questionImage.style.display = 'none';
             imageContainer.style.display = 'none';
         }
-        this.questionText.textContent = q.question;
+        this.questionText.textContent = getBilingualText(q.question);
         
-        // 生成选项
         this.optionsContainer.innerHTML = '';
         q.options.forEach((option, index) => {
             const btn = document.createElement('button');
             btn.className = 'option-btn';
             
             if (q.type === "image") {
-                // 图片选择题：选项是图片
                 const img = document.createElement('img');
-                img.src = option;
-                img.alt = `选项 ${index + 1}`;
+                img.src = typeof option === 'string' ? option : (option.src || option);
+                img.alt = `${t('options')} ${index + 1}`;
                 img.style.width = '100%';
                 img.style.height = 'auto';
                 img.style.borderRadius = '8px';
@@ -276,8 +408,7 @@ class WorldCupQuiz {
                 btn.style.textAlign = 'center';
                 btn.style.padding = '10px';
             } else {
-                // 普通选择题：选项是文本
-                btn.textContent = option;
+                btn.textContent = getBilingualText(option);
             }
             
             btn.addEventListener('click', () => this.selectOption(index));
@@ -287,63 +418,53 @@ class WorldCupQuiz {
     
     /**
      * 选择选项
-     * @param {number} index - 选择的选项索引
-     * 处理用户选择，判断是否正确，显示结果，进入下一题或结束游戏
      */
     selectOption(index) {
-        if (this.answered) return;  // 防止重复点击
+        if (this.answered) return;
         this.answered = true;
         
         const q = this.quizQuestions[this.currentQuestion];
         const buttons = this.optionsContainer.querySelectorAll('.option-btn');
         
-        // 记录用户选择（使用问题ID作为键）
         if (q.id) {
             this.userChoicesMap[q.id] = index;
         }
         
-        // 处理选项状态
         buttons.forEach((btn, i) => {
-            btn.disabled = true;  // 禁用所有选项
-            if (i === index) {  // 只处理用户选择的选项
+            btn.disabled = true;
+            if (i === index) {
                 if (q.correct.includes(index)) {
-                    btn.classList.add('correct');  // 正确选项
+                    btn.classList.add('correct');
                 } else {
-                    btn.classList.add('wrong');  // 错误选项
+                    btn.classList.add('wrong');
                 }
             }
         });
         
-        // 统计正确答题数
         if (q.correct.includes(index)) {
             this.correctCount++;
         }
         
-        // 延迟1.5秒后进入下一题或显示结果
         setTimeout(() => {
             this.currentQuestion++;
             if (this.currentQuestion < this.quizQuestions.length) {
-                this.loadQuestion();  // 加载下一题
+                this.loadQuestion();
             } else {
-                this.showResult();  // 显示结果
+                this.showResult();
             }
         }, 1500);
     }
     
     /**
      * 显示结果
-     * 计算正确率，确定评级，显示结果界面
      */
     showResult() {
-        // 计算正确率
         const accuracy = Math.round((this.correctCount / this.quizQuestions.length) * 100);
         
-        // 更新结果数据
         this.correctCountEl.textContent = `${this.correctCount}/${this.quizQuestions.length}`;
         this.finalAccuracyEl.textContent = `${accuracy}%`;
         
-        // 确定评级
-        let rank = ranks[ranks.length - 1];  // 默认最低评级
+        let rank = ranks[ranks.length - 1];
         for (let i = 0; i < ranks.length; i++) {
             if (accuracy >= ranks[i].min) {
                 rank = ranks[i];
@@ -351,24 +472,20 @@ class WorldCupQuiz {
             }
         }
         
-        // 更新评级显示
         this.resultIcon.textContent = rank.icon;
-        this.rankValueEl.textContent = rank.rank;
-        this.resultDescEl.textContent = rank.desc;
+        this.resultTitle.textContent = t('resultTitle');
+        this.rankValueEl.textContent = getBilingualText(rank.rank);
+        this.resultDescEl.textContent = getBilingualText(rank.desc);
         
-        // 检查隐藏成就
         this.checkHiddenAchievement();
         
-        // 标记用户已经玩过游戏（用于下次区分新老玩家）
         WorldCupQuizData.markAsPlayed();
         
-        // 显示结果界面
         this.showScreen(this.resultScreen);
     }
     
     /**
      * 检查隐藏成就
-     * 根据用户选择判断是否解锁隐藏成就
      */
     checkHiddenAchievement() {
         const unlockedAchievements = [];
@@ -381,13 +498,12 @@ class WorldCupQuiz {
         
         if (unlockedAchievements.length > 0) {
             this.achievementContainer.style.display = 'block';
-            // 显示所有解锁的成就
             const achievementHTML = unlockedAchievements.map(a => `
                 <div class="achievement-item">
                     <span class="achievement-icon">${a.icon}</span>
-                    <span class="achievement-name">${a.name}</span>
+                    <span class="achievement-name">${getBilingualText(a.name)}</span>
                 </div>
-                <p class="achievement-desc">${a.desc}</p>
+                <p class="achievement-desc">${getBilingualText(a.desc)}</p>
             `).join('<hr style="border: none; border-top: 1px solid #f0c14b; margin: 15px 0;">');
             
             this.achievementContainer.innerHTML = achievementHTML;
@@ -398,7 +514,6 @@ class WorldCupQuiz {
     
     /**
      * 切换问题类型
-     * @param {string} type - 问题类型：text 或 image
      */
     switchQuestionType(type) {
         if (type === 'text') {
@@ -414,22 +529,20 @@ class WorldCupQuiz {
     
     /**
      * 更新正确答案复选框
-     * @param {string} type - 问题类型：text 或 image
      */
     updateCorrectAnswerCheckboxes(type) {
         const container = type === 'text' ? this.textCorrectAnswers : this.imageCorrectAnswers;
         const optionsContainer = type === 'text' ? this.textOptionsContainer : this.imageOptionsContainer;
         const options = optionsContainer.querySelectorAll('.option-input');
         
-        // 保存当前选中的正确答案索引
-        const checkedIndices = Array.from(container.querySelectorAll('input[name="' + type + '-correct"]:checked'))
+        const checkedIndices = Array.from(container.querySelectorAll(`input[name="${type}-correct"]:checked`))
             .map(input => parseInt(input.value));
         
         container.innerHTML = '';
         
         options.forEach((option, index) => {
             const input = option.querySelector(type === 'text' ? '.option-text' : '.option-image');
-            const value = type === 'text' ? input.value || `选项 ${index + 1}` : `选项 ${index + 1}`;
+            const value = type === 'text' ? (input.value || `Option ${index + 1}`) : `${t('options')} ${index + 1}`;
             const isChecked = checkedIndices.includes(index);
             
             const item = document.createElement('div');
@@ -446,11 +559,13 @@ class WorldCupQuiz {
      * 添加文本选项
      */
     addTextOption() {
+        const lang = WorldCupQuizData.getCurrentLanguage();
         const optionCount = this.textOptionsContainer.querySelectorAll('.option-input').length + 1;
+        const placeholder = lang === 'zh' ? `选项 ${optionCount}` : `Option ${optionCount}`;
         const optionInput = document.createElement('div');
         optionInput.className = 'option-input';
         optionInput.innerHTML = `
-            <input type="text" class="option-text" placeholder="选项 ${optionCount}" required>
+            <input type="text" class="option-text" placeholder="${placeholder}" required>
             <button type="button" class="remove-option">×</button>
         `;
         this.textOptionsContainer.appendChild(optionInput);
@@ -474,22 +589,18 @@ class WorldCupQuiz {
     
     /**
      * 移除选项
-     * @param {HTMLElement} button - 移除按钮
-     * @param {HTMLElement} container - 选项容器
      */
     removeOption(button, container) {
         const optionInputs = container.querySelectorAll('.option-input');
         if (optionInputs.length > 2) {
             button.parentElement.remove();
         } else {
-            alert('至少需要2个选项');
+            alert(t('minTwoOptions'));
         }
     }
     
     /**
      * 将文件转换为Base64
-     * @param {File} file - 文件对象
-     * @returns {Promise<string>} Base64字符串
      */
     fileToBase64(file) {
         return new Promise((resolve, reject) => {
@@ -507,28 +618,26 @@ class WorldCupQuiz {
         const selectedType = document.querySelector('input[name="question-type"]:checked').value;
         
         if (selectedType === 'text') {
-            // 文字选择题
             const questionText = this.textQuestion.value.trim();
             const hasImage = !this.noImageCheckbox.checked;
             const questionImage = hasImage ? this.textQuestionImage.files[0] : null;
             const textOptions = Array.from(this.textOptionsContainer.querySelectorAll('.option-text')).map(input => input.value.trim());
             
-            // 获取选中的正确答案
             const selectedCorrectAnswers = Array.from(document.querySelectorAll('input[name="text-correct"]:checked'))
                 .map(input => parseInt(input.value));
             
             if (!questionText) {
-                alert('请输入问题');
+                alert(t('alertEnterQuestion'));
                 return;
             }
             
             if (textOptions.some(option => !option)) {
-                alert('请填写所有选项');
+                alert(t('alertFillAllOptions'));
                 return;
             }
             
             if (selectedCorrectAnswers.length === 0) {
-                alert('请至少选择一个正确答案');
+                alert(t('alertSelectCorrect'));
                 return;
             }
             
@@ -536,70 +645,63 @@ class WorldCupQuiz {
             if (hasImage && questionImage) {
                 imageBase64 = await this.fileToBase64(questionImage);
             }
-            
+
             const newQuestion = {
                 image: imageBase64,
-                question: questionText,
-                options: textOptions,
+                question: { zh: questionText, en: questionText },
+                options: textOptions.map(opt => ({ zh: opt, en: opt })),
                 correct: selectedCorrectAnswers
             };
 
-            // 保存到线上共享题库
             const result = await WorldCupQuizData.saveUserQuestion(newQuestion);
 
             if (result.local) {
-                alert('无法连接到线上题库，问题已保存到本地');
+                alert(t('alertCannotConnectCloud'));
             } else {
-                alert('问题已保存到线上共享题库！');
+                alert(t('alertSavedToCloud'));
             }
 
-            // 重新加载问题
             location.reload();
 
         } else {
-            // 图片选择题
             const questionText = document.getElementById('image-question').value.trim();
             const imageOptions = Array.from(this.imageOptionsContainer.querySelectorAll('.option-image')).map(input => input.files[0]);
             
-            // 获取选中的正确答案
             const selectedCorrectAnswers = Array.from(document.querySelectorAll('input[name="image-correct"]:checked'))
                 .map(input => parseInt(input.value));
             
             if (!questionText) {
-                alert('请输入问题');
+                alert(t('alertEnterQuestion'));
                 return;
             }
             
             if (imageOptions.some(file => !file)) {
-                alert('请上传所有图片选项');
+                alert(t('alertUploadImages'));
                 return;
             }
             
             if (selectedCorrectAnswers.length === 0) {
-                alert('请至少选择一个正确答案');
+                alert(t('alertSelectCorrect'));
                 return;
             }
             
-            // 转换所有图片为Base64
             const imageBase64s = await Promise.all(imageOptions.map(file => this.fileToBase64(file)));
             
             const newQuestion = {
-                question: questionText,
+                question: { zh: questionText, en: questionText },
                 options: imageBase64s,
                 correct: selectedCorrectAnswers,
                 type: 'image'
             };
 
-            // 保存到线上共享题库
             const result = await WorldCupQuizData.saveUserQuestion(newQuestion);
 
             if (result.local) {
-                alert('无法连接到线上题库，问题已保存到本地');
+                alert(t('alertCannotConnectCloud'));
             } else {
-                alert('问题已保存到线上共享题库！');
+                alert(t('alertSavedToCloud'));
             }
 
-            // 重新加载问题
             location.reload();
         }
     }

@@ -571,6 +571,37 @@ body {
     flex-wrap: wrap;
 }
 
+/* 语言切换按钮容器 */
+.language-selector {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+/* 语言切换按钮 */
+.lang-btn {
+    padding: 8px 20px;
+    border: 2px solid #e9ecef;
+    background: white;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #6c757d;
+}
+
+.lang-btn:hover {
+    border-color: #3498db;
+    color: #3498db;
+}
+
+.lang-btn.active {
+    background: #3498db;
+    border-color: #3498db;
+    color: white;
+}
+
 /* 响应式设计：移动端适配 */
 @media (max-width: 480px) {
     .screen {
