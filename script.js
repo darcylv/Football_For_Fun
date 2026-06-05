@@ -50,7 +50,16 @@ const i18n = {
         alertUploadImages: '请上传所有图片选项',
         alertCannotConnectCloud: '无法连接到线上题库，问题已保存到本地',
         alertSavedToCloud: '问题已保存到线上共享题库！',
-        minTwoOptions: '至少需要2个选项'
+        minTwoOptions: '至少需要2个选项',
+        rankCoach: '教练席',
+        rankVip: 'VIP包厢',
+        rankRegular: '普通观众席',
+        rankOutside: '场外球迷区',
+        rankHome: '家里蹲',
+        unlocked: '已获得',
+        locked: '未获得',
+        yourSeatHint: '你获得的观赛席位是',
+        achievementHint: '恭喜解锁隐藏成就！'
     },
     en: {
         title: 'World Cup Classic Moments',
@@ -86,7 +95,16 @@ const i18n = {
         alertUploadImages: 'Please upload all image options',
         alertCannotConnectCloud: 'Cannot connect to online question bank, saved locally',
         alertSavedToCloud: 'Question saved to online shared question bank!',
-        minTwoOptions: 'At least 2 options required'
+        minTwoOptions: 'At least 2 options required',
+        rankCoach: "Coach's Box",
+        rankVip: 'VIP Box',
+        rankRegular: 'Regular Seats',
+        rankOutside: 'Outside Fan Zone',
+        rankHome: 'Home Watching',
+        unlocked: 'Unlocked',
+        locked: 'Locked',
+        yourSeatHint: 'Your seating assignment is',
+        achievementHint: 'Congratulations! Hidden achievement unlocked!'
     }
 };
 
@@ -461,21 +479,34 @@ class WorldCupQuiz {
     showResult() {
         const accuracy = Math.round((this.correctCount / this.quizQuestions.length) * 100);
         
-        this.correctCountEl.textContent = `${this.correctCount}/${this.quizQuestions.length}`;
+        this.correctCountEl.textContent = `${this.correctCount}`;
         this.finalAccuracyEl.textContent = `${accuracy}%`;
         
-        let rank = ranks[ranks.length - 1];
+        let currentRank = ranks[ranks.length - 1];
+        let currentRankId = 'home';
         for (let i = 0; i < ranks.length; i++) {
             if (accuracy >= ranks[i].min) {
-                rank = ranks[i];
+                currentRank = ranks[i];
                 break;
             }
         }
         
-        this.resultIcon.textContent = rank.icon;
+        const rankIds = ['coach', 'vip', 'regular', 'outside', 'home'];
+        for (let i = 0; i < ranks.length; i++) {
+            const rankItem = document.querySelector(`[data-rank="${rankIds[i]}"]`);
+            
+            if (rankItem) {
+                if (accuracy >= ranks[i].min && accuracy < (ranks[i-1]?.min || 101)) {
+                    rankItem.classList.add('selected');
+                    currentRankId = rankIds[i];
+                } else {
+                    rankItem.classList.remove('selected');
+                }
+            }
+        }
+        
         this.resultTitle.textContent = t('resultTitle');
-        this.rankValueEl.textContent = getBilingualText(rank.rank);
-        this.resultDescEl.textContent = getBilingualText(rank.desc);
+        this.resultDescEl.textContent = getBilingualText(currentRank.desc);
         
         this.checkHiddenAchievement();
         
@@ -498,7 +529,8 @@ class WorldCupQuiz {
         
         if (unlockedAchievements.length > 0) {
             this.achievementContainer.style.display = 'block';
-            const achievementHTML = unlockedAchievements.map(a => `
+            const achievementHTML = `<p class="achievement-hint">${t('achievementHint')}</p>` + 
+                unlockedAchievements.map(a => `
                 <div class="achievement-item">
                     <span class="achievement-icon">${a.icon}</span>
                     <span class="achievement-name">${getBilingualText(a.name)}</span>

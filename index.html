@@ -48,31 +48,51 @@
 
         <!-- 结果界面：显示评测结果和评级 -->
         <div id="result-screen" class="screen">
-            <!-- 结果图标：显示评级对应的图标 -->
-            <div class="result-icon" id="result-icon">🏟️</div>
             <h1 id="result-title" data-i18n="resultTitle">评测结果</h1>
-            <!-- 统计信息：显示正确题数和正确率 -->
-            <div class="result-stats">
-                <div class="stat-item">
-                    <span class="stat-label" data-i18n="correctCount">正确题数</span>
-                    <span class="stat-value" id="correct-count">0</span>
+            
+            <div class="quiz-result">
+                <div class="result-row">
+                    <span class="result-label" data-i18n="correctCount">正确题数</span>
+                    <span class="result-value" id="correct-count">0</span>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-label" data-i18n="accuracy">正确率</span>
-                    <span class="stat-value" id="final-accuracy">0%</span>
+                <div class="result-row">
+                    <span class="result-label" data-i18n="accuracy">正确率</span>
+                    <span class="result-value" id="final-accuracy">0%</span>
                 </div>
             </div>
-            <!-- 评级显示：显示用户的观赛席位评级 -->
-            <div class="result-rank">
-                <span class="rank-label" data-i18n="yourRank">你的评级</span>
-                <span class="rank-value" id="rank-value">普通观众席</span>
+            
+            <p class="rank-hint" data-i18n="yourSeatHint">你获得的观赛席位是</p>
+            
+            <div class="ranks-container">
+                <div class="rank-item top-rank" data-rank="coach">
+                    <span class="rank-icon">⚽</span>
+                    <span class="rank-name" data-i18n="rankCoach">教练席</span>
+                </div>
+                <div class="rank-item" data-rank="vip">
+                    <span class="rank-icon">⭐</span>
+                    <span class="rank-name" data-i18n="rankVip">VIP包厢</span>
+                </div>
+                <div class="rank-item" data-rank="regular">
+                    <span class="rank-icon">🙋</span>
+                    <span class="rank-name" data-i18n="rankRegular">普通观众席</span>
+                </div>
+                <div class="rank-item" data-rank="outside">
+                    <span class="rank-icon">🍺</span>
+                    <span class="rank-name" data-i18n="rankOutside">场外球迷区</span>
+                </div>
+                <div class="rank-item bottom-rank" data-rank="home">
+                    <span class="rank-icon">🏠</span>
+                    <span class="rank-name" data-i18n="rankHome">家里蹲</span>
+                </div>
             </div>
-            <!-- 结果描述：显示评级对应的描述文字 -->
-            <p id="result-description" class="result-description"></p>
-            <!-- 隐藏成就显示区域 -->
+            
+            <div class="current-rank-description">
+                <p id="result-description" class="result-description"></p>
+            </div>
+            
             <div id="achievement-container" class="achievement-container" style="display: none;">
             </div>
-            <!-- 操作按钮 -->
+            
             <div class="result-buttons">
                 <button id="restart-btn" class="primary-btn" data-i18n="playAgain">再玩一次</button>
                 <button id="create-question-btn" class="secondary-btn" data-i18n="createQuestion">创建问题</button>

@@ -31,7 +31,7 @@
             image: "images/baqiao.jpg",
             question: {
                 zh: "这是哪一届世界杯的罗伯特巴乔",
-                en: "Which World Cup does this Roberto Baggio belong to?"
+                en: "Which World Cup did Roberto Baggio joined?"
             },
             options: [
                 { zh: "90年决赛", en: "1990 Final" },
@@ -71,21 +71,6 @@
             correct: [0, 1]
         },
         {
-            id: "Q004",
-            image: "images/shangdi.jpg",
-            question: {
-                zh: "能猜出这是哪位球员吗？",
-                en: "Can you guess which player this is?"
-            },
-            options: [
-                { zh: "馬勒當拿", en: "MaLeDangNa" },
-                { zh: "马拉多纳", en: "Maradona" },
-                { zh: "哨牙蘇", en: "ShaoYaSu" },
-                { zh: "苏亚雷斯", en: "Suarez" }
-            ],
-            correct: [0, 1]
-        },
-        {
             id: "Q005",
             image: "images/suya.jpg",
             question: {
@@ -99,6 +84,21 @@
                 { zh: "苏亚雷斯", en: "Suarez" }
             ],
             correct: [2, 3]
+        },
+        {
+            id: "Q004",
+            image: "images/shangdi.jpg",
+            question: {
+                zh: "能猜出这是哪位球员吗？",
+                en: "Can you guess which player this is?"
+            },
+            options: [
+                { zh: "馬勒當拿", en: "MaLeDangNa" },
+                { zh: "马拉多纳", en: "Maradona" },
+                { zh: "哨牙蘇", en: "ShaoYaSu" },
+                { zh: "苏亚雷斯", en: "Suarez" }
+            ],
+            correct: [0, 1]
         },
         {
             id: "Q006",

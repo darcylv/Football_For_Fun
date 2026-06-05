@@ -239,55 +239,126 @@ body {
     margin-bottom: 30px;
 }
 
-/* 统计信息容器 */
-.result-stats {
+/* 答题结果容器 */
+.quiz-result {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    margin-bottom: 30px;
+    gap: 50px;
+    margin-bottom: 35px;
+    padding: 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 15px;
 }
 
-/* 统计项 */
-.stat-item {
+/* 结果行 */
+.result-row {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 8px;
 }
 
-/* 统计标签 */
-.stat-label {
-    font-size: 0.9rem;
-    color: #7f8c8d;
+/* 结果标签 */
+.result-label {
+    font-size: 0.95rem;
+    color: #6c757d;
+    font-weight: 500;
 }
 
-/* 统计数值 */
-.stat-value {
-    font-size: 1.8rem;
+/* 结果数值 */
+.result-value {
+    font-size: 2rem;
     font-weight: 700;
     color: #3498db;
 }
 
-/* 评级显示 */
-.result-rank {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 20px 30px;
+/* 评级容器 */
+.ranks-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f9fa;
     border-radius: 15px;
+}
+
+/* 评级项 */
+.rank-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background: white;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    opacity: 0.5;
+    filter: grayscale(50%);
+}
+
+/* 顶部评级特殊样式 */
+.rank-item.top-rank {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+/* 底部评级特殊样式 */
+.rank-item.bottom-rank {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+/* 当前获得的评级样式 */
+.rank-item.selected {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: #667eea;
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* 当前获得的评级文字颜色 */
+.rank-item.selected .rank-name,
+.rank-item.selected .rank-icon {
+    color: white;
+}
+
+/* 评级图标 */
+.rank-icon {
+    font-size: 1.5rem;
+    margin-right: 12px;
+    color: #6c757d;
+}
+
+/* 评级名称 */
+.rank-name {
+    flex: 1;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    text-align: left;
+}
+
+/* 评级提示文字 */
+.rank-hint {
+    font-size: 1.1rem;
+    color: #5a6c7d;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+/* 当前评级描述容器 */
+.current-rank-description {
     margin-bottom: 25px;
 }
 
-/* 评级标签 */
-.rank-label {
-    display: block;
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 5px;
-}
-
-/* 评级数值 */
-.rank-value {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: white;
+/* 结果描述 */
+.result-description {
+    font-size: 1rem;
+    color: #5a6c7d;
+    line-height: 1.6;
+    margin-bottom: 30px;
 }
 
 /* 结果描述 */
@@ -307,6 +378,14 @@ body {
     margin-bottom: 25px;
     text-align: center;
     animation: achievementPop 0.5s ease-out;
+}
+
+/* 隐藏成就提示文字 */
+.achievement-hint {
+    font-size: 1.1rem;
+    color: #b8860b;
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
 @keyframes achievementPop {
